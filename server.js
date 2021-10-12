@@ -26,7 +26,7 @@ function eventsHandler(request, response, next) {
 
     const deviceId = request.params['deviceId']; //Date.now();
 
-    const data = '<h1>Server Sent Events Demo - Device ID: ' +  deviceId + '</h1>\n\n';
+    const data = 'Server Sent Events Demo - Device ID: ' +  deviceId + '\n\n';
 
     response.write(data);
 
