@@ -10,7 +10,11 @@ let facts = [];
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/status', (request, response) => response.json({ clients: clients.length }));
+app.get('/status', (request, response) => {
+    statusResponse = { hostname: process.env.HOSTNAME, clients: clients.length }
+    console.log(statusResponse);
+    response.json(statusResponse)
+});
 
 function eventsHandler(request, response, next) {
     const headers = {
