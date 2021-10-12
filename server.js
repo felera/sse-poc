@@ -51,6 +51,7 @@ function sendEventsToAll(newFact) {
 
 async function addFact(request, respsonse, next) {
     const newFact = request.body;
+    newFact.hostname = process.env.HOSTNAME;
     console.log('Adding fact: ' + request.body.id);
     facts.push(newFact);
     respsonse.json(newFact)
@@ -67,6 +68,7 @@ function sendEventsToOne(newFact, deviceId) {
 async function addSingleFact(request, respsonse, next) {
     const newFact = request.body;
     console.log('Adding fact: ' + request.body.id);
+    newFact.hostname = process.env.HOSTNAME;
     facts.push(newFact);
     respsonse.json(newFact)
     return sendEventsToOne(newFact, request.body.deviceId);
