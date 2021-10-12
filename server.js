@@ -24,11 +24,13 @@ function eventsHandler(request, response, next) {
     };
     response.writeHead(200, headers);
 
-    const data = `data: ${JSON.stringify(facts)}\n\n`;
+    const deviceId = request.params['deviceId']; //Date.now();
+
+    const data = '<h1>Server Sent Events Demo - Device ID: ' +  deviceId + '</h1>\n\n';
 
     response.write(data);
 
-    const deviceId = request.params['deviceId']; //Date.now();
+    
 
     const newClient = {
         deviceId,
